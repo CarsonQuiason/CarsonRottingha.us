@@ -82,7 +82,7 @@
             weatherLogo.src = "/Assets/openWeatherIconLight.png";
             bbLogo.src = "/Assets/basketballLight.png";
             tttLogo.src = "/Assets/tictactoeLight.png";
-            
+
             
             for(i = 0; i < body.length; i++){
                 body[i].style.color = "#000000";
@@ -198,7 +198,7 @@
                         <img id="tttLogo" src="/Assets/tictactoeDark.png" class="projectimgSize" alt="TicTacToe Picture">
                     </div>
                     <a class="fill-div hvr-grow-shadow" href="https://github.com/CarsonQuiason/MVC-Tic-Tac-Toe"></a>
-                </div>  
+                </div>
                 
                 <div class="cardContainer hvr-grow-shadow">
                     <div class="cardTextContainer">
@@ -234,15 +234,15 @@
                         <img id="ajaxLogo" src="Assets/ajaxIMGDark.png" class="projectimgSize" alt="AJAX picture">
                     </div>
                     <a class="fill-div hvr-grow-shadow" href="Projects/CqrqfdAJAX/index.html"></a>
-                </div>  
-                
+                </div>
+
             </div>
         </div>
     </div>
 
 
     <div id="experience">
-        <div id="experiencecontent">    
+        <div id="experiencecontent">
             <h1 class="headText">Languages</h1>
             <div id="iconTray1" class="iconTrayDark">
                 <div class="iconContainer hvr-grow-shadow">
