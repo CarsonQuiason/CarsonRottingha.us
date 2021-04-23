@@ -1,0 +1,219 @@
+<!--
+name: Carson Rottinghaus
+pawprint: cqrqfd
+date: 4/3/20 
+Challenge PHP S20
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script>
+            function submit(){
+                var sel = document.getElementById("type");
+                var opt = sel.options[sel.selectedIndex].value;
+                if(opt == "Greeting"){
+                    if(document.getElementById("fname").value == "" || document.getElementById("lname").value == ""){
+                        alert("Please fill out all of the boxes");
+                        return;
+                    }
+                    var formObj = document.getElementById("greetForm");
+                    formObj.submit();
+                    
+                }
+                if(opt == "Factorial"){
+                    if(document.getElementById("num").value == ""){
+                        alert("Please fill out all of the boxes");
+                        return;
+                    }
+                    var formObj = document.getElementById("factorialForm");
+                    formObj.submit();
+                }
+                if(opt == "Reverse"){
+                    if(document.getElementById("str").value == ""){
+                        alert("Please fill out all of the boxes");
+                        return;
+                    }
+                    var formObj = document.getElementById("reverseForm");
+                    formObj.submit();
+                }
+                if(opt == "Sum"){
+                    if(document.getElementById("n1").value == "" || document.getElementById("n2").value == ""){
+                        alert("Please fill out all of the boxes");
+                        return;
+                    }
+                    var formObj = document.getElementById("sumForm");
+                    formObj.submit();
+                }
+            }
+            
+            function clearF(){
+                var sel = document.getElementById("type");
+                var opt = sel.options[sel.selectedIndex].value;
+                if(opt == "Greeting"){
+                    document.getElementById("fname").value = "";
+                    document.getElementById("lname").value = "";
+                }
+                if(opt == "Factorial"){
+                    document.getElementById("num").value = "";
+                }
+                if(opt == "Reverse"){
+                    document.getElementById("str").value = "";
+                }
+                if(opt == "Sum"){
+                    document.getElementById("n1").value = ""; 
+                    document.getElementById("n2").value = "";
+                }
+            }
+            
+            function checkFunc(){
+                var sel = document.getElementById("type");
+                var opt = sel.options[sel.selectedIndex].value;
+                if(opt == "Greeting"){
+                    document.getElementById("greetDiv").className = "display";
+                    document.getElementById("factorialDiv").className = "hidden";
+                    document.getElementById("reverseDiv").className = "hidden";
+                    document.getElementById("sumDiv").className = "hidden";  
+                }
+                if(opt == "Factorial"){
+                    var formType = 2;
+                    document.getElementById("factorialDiv").className = "display";
+                    document.getElementById("greetDiv").className = "hidden";
+                    document.getElementById("reverseDiv").className = "hidden";
+                    document.getElementById("sumDiv").className = "hidden";
+                }
+                if(opt == "Reverse"){
+                    var formType = 3;
+                    document.getElementById("reverseDiv").className = "display";
+                    document.getElementById("factorialDiv").className = "hidden";
+                    document.getElementById("greetDiv").className = "hidden";
+                    document.getElementById("sumDiv").className = "hidden";
+                }
+                if(opt == "Sum"){
+                    var formType = 4;
+                    document.getElementById("sumDiv").className = "display";
+                    document.getElementById("factorialDiv").className = "hidden";
+                    document.getElementById("reverseDiv").className = "hidden";
+                    document.getElementById("greetDiv").className = "hidden";
+                }
+            }
+            
+        </script>
+        <style>
+            .formContainer{
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin: 0 auto;
+                width: 70%;
+                min-height: 60vh;
+                justify-content: space-between;
+                background-color: lightblue;
+                border-top: 4x;
+                border-top-color: grey;
+                border-bottom: 4px;
+                border-bottom-color: grey;
+                border-right: 0px;
+                border-left: 0px;
+                border-style: solid;
+                text-align:center;
+                position: relative;
+            }
+            .button {
+                font-weight: bold;
+                background-color: white;
+                border: solid;
+                border-width: 1px;
+                border-color: grey;
+                border-radius: 5px;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            .formDiv{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+            .bottom{
+                bottom: 30px;
+                position: absolute;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+            .selection{
+                margin-bottom: 30px;
+            }
+            .h1{
+                text-align: center;  
+                }
+            .hidden{
+                display:none
+            }
+            .display{
+                display: block;
+            }
+            
+        </style>
+    </head> 
+    <body onload="checkFunc()">
+        <button id="back" type="button" class="button" onclick="window.history.back()">Back</button>
+        <div class="formContainer">
+            <h1 class="h1">PHP Functions</h1>
+            <div class="formDiv">
+                <div class=selection>
+                    <select id="type" onchange="checkFunc();">
+                        <option disabled="disabled" value="NONE">Choose a function to run on the server</option>
+                        <option value="Greeting">Greeting</option>
+                        <option value="Factorial">Factorial</option>
+                        <option value="Reverse">Reverse String</option>
+                        <option value="Sum">Sum of Squares</option>
+                    </select>
+                </div>
+                <form id="greetForm" action=information.php method="POST">
+                <div id="greetDiv" class="hidden">
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="fname"><br><br>
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="lname" name="lname"><br><br>
+                </div>
+                </form>
+                
+                <form id="factorialForm" action=information.php method="GET">
+                <div id="factorialDiv" class="hidden">
+                    <label for="number">Number:</label>
+                    <input type="text" id="num" name="num">
+                    <br><br>
+                </div>
+                </form>
+                
+                <form id="reverseForm" action=information.php method="GET">
+                <div id="reverseDiv" class="hidden">
+                    <label for="str">String:</label>
+                    <input type="text" id="str" name="str">
+                    <br><br>
+                </div>
+                </form>
+                
+                <form id="sumForm" action=information.php method="GET">
+                <div id="sumDiv" class="hidden">
+                    <label for="sum">N1</label>
+                    <input type="text" id="n1" name="n1"><br><br>
+                    <label for="sum">N2</label>
+                    <input type="text" id="n2" name="n2"><br><br>
+                </div>
+                </form>
+                
+                <div class="bottom">
+                    <button id="addItem" class="button" onclick="submit()" type="button">Submit</button>
+                    <button id="clearForm" class="button" type="button" onclick="clearF()">Clear</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

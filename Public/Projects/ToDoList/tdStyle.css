@@ -1,0 +1,130 @@
+*{
+    font-family: 'Saira';
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+body{
+    background-color: white;
+}
+#back{
+    float: left;
+}
+#theme{
+    float: right;
+}
+h1{
+    color: black;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.tableContainer{
+    margin: 0 auto;
+    width: 80%;
+    height: 700px;
+    overflow-y: auto;
+}
+.formContainer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    width: 80%;
+    height: 50%;
+    justify-content: space-between;
+    border-top: 1px;
+    border-top-color: grey;
+    border-bottom: 1px;
+    border-bottom-color: grey;
+    border-right: 0px;
+    border-left: 0px;
+    border-style: solid;
+}
+.formDiv{
+    display: flex;
+    justify-content: space-between;
+}
+.buttonStyle{
+    margin-right: 20px;
+}
+table{
+    table-layout: fixed;
+
+}
+td{
+    width: 400px;
+}
+.button {
+    font-weight: bold;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 5px;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.complete{
+    background: url("checkMark.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+}
+
+#clearForm:hover{
+    background-color: darkred!important;
+}
+
+#back:hover{
+    background-color: darkred!important;
+}
+
+#addItem:hover{
+    background-color: green!important;
+}
+#theme:hover{
+    background-color: #333!important;
+}
+
+input[type=text], select{
+    font-weight: bold;
+    width: 100%;
+    padding: 15px 32px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-color: grey;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=date]{
+    font-weight: bold;
+    width: 100%;
+    padding: 15px 32px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-color: grey;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

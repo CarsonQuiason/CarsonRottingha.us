@@ -1,0 +1,264 @@
+<!--
+name: Carson Rottinghaus
+pawprint: CQRQFD
+date: 4/17/2020
+challenge: AJAX Spring 2020
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>AJAX Test</title>
+        <script>
+            
+            //Office Hours
+            function officeHoursRequest(day){
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function(){
+                if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                    var myArr = JSON.parse(this.responseText);
+                    officeHoursInfo(myArr);
+                    }  
+                };
+            xmlHttp.open("GET",'https://www.mizzouit.com/2830/challenge9/classInfo.php?content=officeHours&format=json&day='+day,true);
+            xmlHttp.send();
+            }
+            
+            function officeHoursInfo(arr){
+                var PofficeHourInfo = document.getElementById("officeHourInfo");
+                PofficeHourInfo.innerHTML = "Loading...";
+                PofficeHourInfo.innerHTML = " ";
+                for(i = 0; i < arr.officeHours.length; i++){
+                    PofficeHourInfo.innerHTML += arr.officeHours[i].person + " " + arr.officeHours[i].time + "<br/>" + arr.officeHours[i].location + "<br/><br/>";
+                }
+            }
+            
+            
+            //Overview
+            var overView = new XMLHttpRequest();
+            overView.onreadystatechange = function(){
+                if(overView.readyState == 4 && overView.status == 200){
+                        
+                    overViewFunction(this);
+                }
+            };  
+            overView.open("GET",'https://www.mizzouit.com/2830/challenge9/classInfo.php?content=info',true);
+            overView.send();
+            
+            function overViewFunction(xml){
+                var response = overView.responseText;
+                infoData.innerHTML = response;
+            }
+            
+            
+            //Challenges
+            var challengeRequest = new XMLHttpRequest();
+            challengeRequest.onreadystatechange = function(){
+                if(challengeRequest.readyState == 4 && challengeRequest.status == 200){
+                    
+                    challengeInfo(this);
+                }
+            }  
+            challengeRequest.open("GET",'https://www.mizzouit.com/2830/challenge9/classInfo.php?content=currentAssignment&format=xml',true);
+            challengeRequest.send();
+            
+            function challengeInfo(xml){
+                xmlDoc = xml.responseXML;
+                
+                var PcurrentAssignment = document.getElementById("currentAssignment");
+                var assignmentName = xmlDoc.getElementsByTagName("assignmentName")[0].childNodes[0].nodeValue;
+                var assignmentDate = xmlDoc.getElementsByTagName("dueDateTimestamp")[0].childNodes[0].nodeValue;
+                var convertedDate = new Date(assignmentDate * 1000);
+                
+                PcurrentAssignment.innerHTML = assignmentName + "<br/><br/>Due By: " + convertedDate;
+            }
+            
+            
+            
+            //Class Type
+            var classRequest = new XMLHttpRequest();
+            classRequest.onreadystatechange = function(){
+                if(classRequest.readyState == 4 && classRequest.status == 200){
+                    
+                    classInfo(this);
+                }
+            }  
+            classRequest.open("GET",'https://www.mizzouit.com/2830/challenge9/classInfo.php?content=classType',true);
+            classRequest.send();
+            
+            function classInfo(xml){
+                var response = classRequest.responseText;
+                var PclassType = document.getElementById("classType");
+                
+                PclassType.innerHTML = response;
+            }
+            
+            
+            
+        </script>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+                font-size: 100%;
+                vertical-align: baseline;
+                background: transparent;
+                font-family: 'Quicksand', sans-serif;
+            }
+            html{
+                background-image: linear-gradient(to bottom right, white, grey);
+            }
+            .mainContainer{
+                margin: auto;
+                flex-wrap: wrap-reverse;
+                width: 90%;
+                position: relative;
+                margin-top: 10px;
+                display: flex;
+                align-content: center;
+            }
+            .cardContainer{
+                border-width: 7px;
+                border-style: solid;
+                border-color: #333;
+                border-radius: 15px;
+                width: 700px;
+                height: 250px;
+                background-color: #AAAAAA;
+                position: relative;
+                margin-top: 5%;
+                margin-bottom: 5%;
+                margin-left: auto;
+                margin-right: auto;
+                box-shadow: 5px 10px;
+                overflow: hidden;
+            }
+            .cardTitleContainer{
+                margin: 0 auto;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                text-align: center;
+                text-decoration: underline;
+            }
+            .h1Title{
+                font-size: 50px;
+                color: black;
+                margin: 0 auto;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                text-align: center;
+            }
+            p{
+                margin: 0 auto;
+                padding-top: 20px;
+                padding-bottom: 15px;
+                text-align: center;
+            }
+            .navbarcontainer{
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .hourTextContainer{
+                border-width: 2px;
+                border-style: solid;
+                border-color: #333;
+                border-radius: 10px;
+                width: 700px;
+                height: 150px;
+                background-color: #AAAAAA;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                box-shadow: 2px 5px;
+                overflow: hidden;
+            }
+            .officeHoursTitle{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .tab {
+                overflow: hidden;
+                border: 3px solid #333;
+                border-radius: 10px;
+                box-shadow: 3px 3px;
+            }
+            
+            .tab button {
+                background-color: #AAAAAA;
+                border: 10px;
+                border-color: #333;
+                float: left;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+            }
+            
+            .tab button:hover {
+                background-color: #ddd;
+            }
+            
+            .tab button:focus {
+                background-color: #333;
+                color: white;
+            }
+            
+            .button {
+                font-weight: bold;
+                background-color: white;
+                border: solid;
+                border-width: 1px;
+                border-color: grey;
+                border-radius: 5px;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            
+
+        
+        </style>
+    </head>
+    
+    <body>
+        <button id="back" type="button" class="button" onclick="window.history.back()">Back</button>
+        <h1 class="h1Title">CS2830 Dashboard</h1>
+        <p id="infoData">Loading...</p>
+        <div class="mainContainer">
+            <div class="cardContainer">
+                <p class="cardTitleContainer">Current Assignment</p>
+                <p id="currentAssignment">Loading...</p>
+            </div>
+            <div class="cardContainer">
+                <p class="cardTitleContainer">Class Type</p>
+                <p id="classType">Loading...</p>
+            </div>
+        </div>
+        <p class="officeHoursTitle">Office Hours</p>
+        <div class="navbarcontainer">
+            <div class="navigationbar">
+                <div class="tab">
+                    <button class="tablinks" onclick="officeHoursRequest('monday')">Monday</button>
+                    <button class="tablinks" onclick="officeHoursRequest('tuesday')">Tuesday</button>
+                    <button class="tablinks" onclick="officeHoursRequest('wednesday')">Wednesday</button>
+                    <button class="tablinks" onclick="officeHoursRequest('thursday')">Thursday</button>
+                    <button class="tablinks" onclick="officeHoursRequest('friday')">Friday</button>
+                </div>
+            </div>  
+        </div>
+        <div class="hourTextContainer">
+            <p id="officeHourInfo"></p>
+        </div>
+
+    </body>
+
+
+
+</html>

@@ -1,0 +1,130 @@
+* {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        font-family: 'Quicksand', sans-serif;
+}
+body {
+    height: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: #FFFFFF;
+    background-color: #343a40;
+}
+
+.headText{
+    display: block;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    top: 0;
+}
+
+html {
+  overflow: scroll;
+  padding:0;
+  margin:0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+p {
+  text-align: center;
+}
+
+#signInStyle{
+    float: right;
+}
+
+#aboutmecontent{
+    margin-top:20vw;
+    height:100vh;
+    overflow: hidden;
+    width: 100vh;
+}
+#aboutme{
+    display: flex;
+    justify-content: center;
+}
+
+#projectscontent{
+    margin-top: 5vw;
+    height:100vh;
+    position: relative;
+    width: 100vw;
+    display: block;
+    justify-content: center;
+}
+
+#projects{
+    display:flex;
+    justify-content:center;
+}
+
+#experiencecontent{
+    margin-top:10vw;
+    height:100vh;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    justify-content:center;
+}
+#experience{
+    display:flex;
+    justify-content:center;
+}
+
+#contactcontent{
+    margin-top:10vw;
+    height:100vh;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    justify-content:center;
+}
+
+#contact{
+    display:flex;
+    justify-content:center;
+}
+
+.navbarBorderDark{
+    border-bottom: 1px solid white;
+    z-index: 1;
+}
+
+.navbarBorderLight{
+    border-bottom: 1px solid black;
+    z-index: 1;
+}
+
+.sticky {
+  position: fixed;
+  width: 100%;
+}
+
+.boldText{
+    font-weight: bold;
+}
+
+.greetingContainer{
+    display: inline-block;
+}
+
+a:hover {
+  color: #D3D3D3;
+}
+
+.youtubeVideo{
+    border: 1px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+}
+

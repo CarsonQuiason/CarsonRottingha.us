@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+Name: Carson Rottinghaus
+Pawprint: Cqrqfd
+Date: 2/28/20
+Challenge: To-Do List S20
+-->
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Saira&display=swap" rel="stylesheet">
+        <link href="tdStyle.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <script>
+            var darkMode = false;
+            
+            function newElement(){
+                var tableRef = document.getElementById("myTable").getElementsByTagName("tbody")[0];
+                
+                var titleText = document.getElementById("title").value;
+                var typeText = document.getElementById("type").value;
+                var dateText = document.getElementById("date").value;
+                
+                if(titleText === "" || typeText === "Select Type" || dateText === "") {
+                    alert("Please fill out all of the fields");
+                    return;
+                }
+                
+                var btn = document.createElement('input');
+                btn.type = "image";
+                btn.className = "complete";
+                btn.addEventListener("click",function() {
+                                     this.closest("tr").remove();
+                                     });
+                btn.src = "checkMark.png";
+                var newRow = tableRef.insertRow();
+                var titleCell = newRow.insertCell(0);
+                var typeCell = newRow.insertCell(1);
+                var dateCell = newRow.insertCell(2);
+                var actionCell = newRow.insertCell(3);
+                titleCell.append(titleText);
+                typeCell.append(typeText);
+                dateCell.append(dateText);
+                actionCell.append(btn);
+                clearF();
+            }
+            
+            function toggleTheme(){
+                var buttons = document.getElementsByClassName("button");
+                
+                if(darkMode) {
+                    document.getElementById("theme").innerText = "Theme: Light"
+                    document.getElementById("myTable").classList.remove('table-dark');
+                    document.body.style.backgroundColor = "#FFFFFF";
+                    document.getElementById("h1Title").style.color = "#000000";
+                    document.getElementById("title").style.backgroundColor = "white";
+                    document.getElementById("title").style.borderColor = "grey";
+                    document.getElementById("title").style.color = "black";
+                    document.getElementById("type").style.backgroundColor = "white";
+                    document.getElementById("type").style.borderColor = "grey";
+                    document.getElementById("type").style.color = "black";
+                    document.getElementById("date").style.backgroundColor = "white";
+                    document.getElementById("date").style.borderColor = "grey";
+                    document.getElementById("date").style.color = "black";
+                    
+                    for(i = 0; i < buttons.length; i++){
+                        buttons[i].style.backgroundColor = "white"
+                        buttons[i].style.color = "black"
+                        buttons[i].style.borderColor = "grey"
+                    }
+                    darkMode = false;
+                }
+                
+                else{
+                    document.getElementById("theme").innerText = "Theme: Dark"
+                    document.getElementById("myTable").classList.add('table-dark');
+                    document.body.style.backgroundColor = "#343a40";
+                    document.getElementById("h1Title").style.color = "#FFFFFF";
+                    document.getElementById("title").style.backgroundColor = "#212529";
+                    document.getElementById("title").style.color = "#FFFFFF";
+                    document.getElementById("title").style.backgroundColor = "#212529";
+                    document.getElementById("title").style.borderColor = "#212529";
+                    document.getElementById("type").style.backgroundColor = "#212529";
+                    document.getElementById("type").style.borderColor = "#212529";
+                    document.getElementById("type").style.color = "white";
+                    document.getElementById("date").style.backgroundColor = "#212529";
+                    document.getElementById("date").style.borderColor = "#212529";
+                    document.getElementById("date").style.color = "white";
+                    
+                    for(i = 0; i < buttons.length; i++){
+                        buttons[i].style.backgroundColor = "#212529"
+                        buttons[i].style.color = "white"
+                        buttons[i].style.borderColor = "#212529"
+                    }
+                    darkMode = true;
+                }
+            }
+            
+            function clearF(){
+                document.getElementById("title").value = "";
+                document.getElementById("type").value = "Select Type";
+                document.getElementById("date").value = "";
+            }
+            
+            function changeTitle(){
+                var changeText = prompt("Enter your new title");
+                if(changeText === ""){
+                    return;
+                }
+                document.getElementById("h1Title").textContent = changeText;
+            }
+        </script>
+        <title>To do list</title>
+    </head>
+    <body>
+        <button id="back" type="button" class="button" onclick="window.history.back()">Back</button>
+        <button id="theme" onclick="toggleTheme()" type="button" class="button">Theme: Light</button>
+        <h1 id="h1Title" ondblclick="changeTitle()">To-Do List</h1>
+        <div class="tableContainer">
+            <table id="myTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="formContainer">
+            <form class=formDiv>
+                <div>
+                    <input type="text" id="title" placeholder="Enter a title">
+                </div>
+                <div>
+                    <select id="type">
+                        <option disabled="disabled">Select Type</option>
+                        <option value="School">School</option>
+                        <option value="Chore">Chore</option>
+                        <option value="Goal">Goal</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="date" id="date">
+                </div>
+                <div>
+                    <button id="addItem" class="button" onclick="newElement()" type="button">Add to list</button>
+                    <button id="clearForm" class="button" type="button" onclick="clearF()">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
